@@ -30,6 +30,7 @@ jobs:
       run: |
         conda init bash
         source ~/.bashrc
+        conda activate base
 
     - name: Create conda environment
       run: |
