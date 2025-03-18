@@ -3,6 +3,9 @@ name: Python package tests
 on:
   pull_request:
     branches: [ main ]
+    types: [opened, synchronize, reopened]
+    paths-ignore:
+      - '**.md'
   push:
     branches: [ main ]
 
@@ -22,6 +25,11 @@ jobs:
         python-version: ${{ matrix.python-version }}
         channels: conda-forge
         auto-update-conda: true
+
+    - name: Initialize conda
+      run: |
+        conda init bash
+        source ~/.bashrc
 
     - name: Create conda environment
       run: |
